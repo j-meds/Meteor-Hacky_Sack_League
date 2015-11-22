@@ -1,0 +1,7 @@
+/* CSS declarations go here */
+
+body {
+    background: linear-gradient(to bottom, #588cbc 0%, #63583a 100%) fixed;
+    height: 100%;
+    width: 100%;
+}
