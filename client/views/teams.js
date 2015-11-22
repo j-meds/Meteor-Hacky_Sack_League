@@ -14,7 +14,8 @@ Template.teams.events({
 			Teams.insert({name: teamName, created: new Date()});
 		}
 		console.log(teamName);
-		teamName = '';
+		
+		event.target.name.value = '';
 
 	}
 })
