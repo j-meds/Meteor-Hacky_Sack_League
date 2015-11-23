@@ -7,9 +7,15 @@
     </form>
     {{else}}
     <a class="create" href="#">Create</a> {{/if}}
-    <ul>
+    <table class="table table-striped table-hover table-bordered">
+        <tr>
+            <th>Team Name</th>
+            <th>Options</th>
+        </tr>
         {{#each teams}}
-        <li>{{name}}</li>
+        <tr>
+            {{>team}}
+        </tr>
         {{/each}}
-    </ul>
+    </table>
 </template>

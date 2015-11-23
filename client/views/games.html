@@ -1,0 +1,64 @@
+<template name='games'>
+    <h3>Games</h3>
+    <button class="btn btn-info create_match">Create Match</button>
+    {{#if isCreatingGame}}
+    <form class="submit_match">
+        <label>Set up match(select two teams):</label>
+        <select name='t1'>
+            {{#each t}}
+            <option value='{{_id}}'>{{name}}</option>
+            {{/each}}
+        </select>
+        <b>VS</b>
+        <select name='t2'>
+            {{#each t}}
+            <option value='{{_id}}'>{{name}}</option>
+            {{/each}}
+        </select>
+        <button class="btn btn-success">Submit</button>
+        <a class="btn btn-danger cancel_create_match">Cancel</a>
+    </form>
+    {{/if}}
+    <br>
+    <table class="table table-bordered">
+        <tr>
+            <th>Match</th>
+            <th>Options</th>
+        </tr>
+        {{#each games}}
+        <tr>
+            <td>
+                {{teams.[0].name}}
+                <b>
+                {{#if isUpdatingMatch}} 
+                <button style='font-size:1.3em' class='btn btn-danger btn-xs minus_point1'>&minus;</button>
+                &nbsp;({{t1Score}})&nbsp; 
+                <button style='font-size:1.3em' class='btn btn-success btn-xs add_point1'>+</button>
+                {{else}}
+                &nbsp;({{teams.[1].score}})&nbsp;
+                {{/if}}
+                </b> &nbsp;&nbsp;
+                <b>vs</b> &nbsp;&nbsp; {{teams.[1].name}}
+                <b>
+                {{#if isUpdatingMatch}} 
+                <button style='font-size:1.3em' class='btn btn-danger btn-xs minus_point2'>&minus;</button>
+                &nbsp;({{t2Score}})&nbsp; 
+                <button style='font-size:1.3em' class='btn btn-success btn-xs add_point2'>+</button>
+                {{else}}
+                &nbsp;({{teams.[1].score}})&nbsp; 
+                {{/if}}
+                </b>
+            </td>
+            <td>
+                {{#if isUpdatingMatch}}
+                <button class="btn btn-success .finish_match">Finish</button>
+                <button class="btn btn-danger active .delete_match">Delete</button>
+                <button class="btn btn-danger .cancel_update_match">cancel</button>
+                {{else}}
+                <button class="btn btn-primary update_match">Update</button>
+                {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+</template>
