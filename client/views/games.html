@@ -31,19 +31,19 @@
                 {{teams.[0].name}}
                 <b>
                 {{#if isUpdatingMatch}} 
-                <button style='font-size:1.3em' class='btn btn-danger btn-xs minus_point1'>&minus;</button>
+                <button class='btn btn-danger btn-xs minus_point1'>&minus;</button>
                 &nbsp;({{t1Score}})&nbsp; 
-                <button style='font-size:1.3em' class='btn btn-success btn-xs add_point1'>+</button>
+                <button class='btn btn-success btn-xs add_point1'>+</button>
                 {{else}}
-                &nbsp;({{teams.[1].score}})&nbsp;
+                &nbsp;({{teams.[0].score}})&nbsp;
                 {{/if}}
                 </b> &nbsp;&nbsp;
                 <b>vs</b> &nbsp;&nbsp; {{teams.[1].name}}
                 <b>
                 {{#if isUpdatingMatch}} 
-                <button style='font-size:1.3em' class='btn btn-danger btn-xs minus_point2'>&minus;</button>
+                <button class='btn btn-danger btn-xs minus_point2'>&minus;</button>
                 &nbsp;({{t2Score}})&nbsp; 
-                <button style='font-size:1.3em' class='btn btn-success btn-xs add_point2'>+</button>
+                <button class='btn btn-success btn-xs add_point2'>+</button>
                 {{else}}
                 &nbsp;({{teams.[1].score}})&nbsp; 
                 {{/if}}
@@ -51,9 +51,9 @@
             </td>
             <td>
                 {{#if isUpdatingMatch}}
-                <button class="btn btn-success .finish_match">Finish</button>
-                <button class="btn btn-danger active .delete_match">Delete</button>
-                <button class="btn btn-danger .cancel_update_match">cancel</button>
+                <button class="btn btn-success finish_match">Finish</button>
+                <button class="btn btn-danger active delete_match">Delete</button>
+                <button class="btn btn-danger cancel_update_match">cancel</button>
                 {{else}}
                 <button class="btn btn-primary update_match">Update</button>
                 {{/if}}

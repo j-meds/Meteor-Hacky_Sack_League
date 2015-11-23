@@ -64,6 +64,45 @@ Template.games.events({
 	'click .cancel_update_match': function(event){
 		Session.set('matchId', null);
 	},
+	'click .delete_match': function(){
+
+		if(this._id){
+
+			var gameId = this._id;
+    		var team1Id = this.teams[0]._id;
+    		var team2Id = this.teams[1]._id;
+
+			if(confirm('Are you sure want to Delete the Match?')){
+
+				Games.remove(gameId, function(err){
+					console.log('delted?');
+					if(!err){
+						Teams.update({_id: team1Id}, { $pull : {gameIds: gameId}});
+						Teams.update({_id: team2Id}, { $pull: { gameIds: gameId}});
+					};
+				});
+			}
+		}
+	},
+	'click .finish_match': function(event){
+		console.log(this);
+
+		var team1 = {
+			_id: this.teams[0]._id,
+     		 name: this.teams[0].name,
+     		 score: Session.get('t1Score')
+		};
+		var team2 = {
+			_id: this.teams[1]._id,
+     		 name: this.teams[1].name,
+     		 score: Session.get('t2Score')
+		};
+		var updated_teams = [team1, team2];
+
+		Games.update({_id: this._id}, {$set: {teams: updated_teams}});
+
+		Session.set('matchId', null);
+	},
 	'click .add_point1': function(event){
 		var current_score = Session.get('t1Score');
 		Session.set('t1Score', current_score + 1);
