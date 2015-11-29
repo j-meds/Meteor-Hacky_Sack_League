@@ -19,3 +19,5 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 bootstrap
 msavin:mongol
 insecure
+accounts-ui
+accounts-password
